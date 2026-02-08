@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Poppins:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  overflow: hidden;
+  color: white;
+}
+
+/* 🔥 CINEMATIC ANIMATED BACKGROUND */
+.bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, #1a1a1a, #000);
+  animation: pulse 6s infinite alternate;
+  z-index: -2;
+}
+
+@keyframes pulse {
+  0% { filter: brightness(0.9); }
+  100% { filter: brightness(1.2); }
+}
+
+/* floating light particles */
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  background: repeating-radial-gradient(circle, rgba(255,255,255,0.05) 0 2px, transparent 3px 40px);
+  animation: move 30s linear infinite;
+}
+
+@keyframes move {
+  from { transform: translateY(0); }
+  to { transform: translateY(200px); }
+}
+
+/* MAIN CONTAINER */
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.card {
+  backdrop-filter: blur(12px);
+  background: rgba(0,0,0,0.55);
+  border-radius: 18px;
+  padding: 30px;
+  max-width: 420px;
+  animation: fadeIn 2s ease;
+  box-shadow: 0 0 30px rgba(255,0,100,0.25);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ff0055, #ff4d88);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,0,100,0.6);
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.08);
+}
+
+/* SECOND PAGE */
+#page2 {
+  display: none;
+}
+
+/* iframe */
+iframe {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  border: none;
+  margin-top: 15px;
+}
+
+/* tap hint */
+.tap {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- 🎧 MUSIC -->
+<audio id="music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="container" id="page1">
+  <div class="card">
+    <h1>Hey Aryman…</h1>
+    <p>
+        I didn’t want this to be loud or dramatic.  
+    I just wanted it to be honest.
+    I feel something real with you —  
+   calm, curious, a little intense but real and rare.
+    I don’t know the perfect way to say this,  
+    but I know I wanted to say it *my way*. 
+      <br><br>
+      I respect you.  
+    And I’d really love to know how *you* feel —
+    honestly, without pressure.
+    I won’t rush you.
+    And don't know when or how but my 'like' did turn into something else,
+  I THINK I LOVE YOU...I REALLY DO :
+    </p>
+    <button onclick="nextPage()">Continue</button>
+    <div class="tap">(tap anywhere to start music)</div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container" id="page2">
+  <div class="card">
+    <h1>One Question ❤️</h1>
+    <p>
+      Whatever you feel,  
+      I want it honest.
+    </p>
+
+    <!-- 🔗 GOOGLE FORM -->
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdEA4yhXDf18-dvROnv1ldzwn2XwAV5jWbE7GT_6ptHhS0XXw/viewform?usp=publish-editor">
+    </iframe>
+  </div>
+</div>
+
+<script>
+const music = document.getElementById("music");
+
+document.addEventListener("click", () => {
+  music.play();
+});
+
+function nextPage() {
+  document.getElementById("page1").style.display = "none";
+  document.getElementById("page2").style.display = "flex";
+}
+</script>
+
+</body>
+</html>
